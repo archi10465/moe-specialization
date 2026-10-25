@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Project-specific: large files that shouldn't go on GitHub
+data/*.bin
+checkpoints/
+wandb/
+*.pt
