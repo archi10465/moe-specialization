@@ -1,0 +1,36 @@
+# Run D: auxiliary loss, WEAK, GLOBAL scope (balanced across the whole batch).
+run_name: run_D
+data_dir: data
+out_dir: checkpoints
+domains: [stories, code, math]
+
+# Model (identical in every MoE run)
+n_layer: 6
+n_head: 4
+n_embd: 256
+block_size: 256
+dropout: 0.0
+bias: false
+expert_hidden: 1024
+n_experts: 6          # 3 domains x 2 experts per token
+top_k: 2
+
+# Balancing (the ONLY settings that change between runs)
+balance: aux           # none | aux | bias
+scope: global          # local = per sequence, global = whole batch
+aux_coef: 0.01         # strength of the auxiliary loss (aux only)
+bias_update: 0.001    # bias step size (bias only)
+
+# Training (keep identical across all runs)
+per_domain: 16        # 16 x 3 domains = 48 sequences per batch
+max_iters: 5000
+warmup_iters: 200
+lr: 6.0e-4
+min_lr: 6.0e-5
+weight_decay: 0.1
+grad_clip: 1.0
+eval_interval: 500
+eval_batches: 20
+seed: 1337
+device: auto          # cuda on Colab, mps on Mac, else cpu
+wandb: false
