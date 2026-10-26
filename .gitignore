@@ -226,3 +226,4 @@ checkpoints/
 wandb/
 *.pt
 .venv/
+results_mac_test/
