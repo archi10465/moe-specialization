@@ -1,0 +1,39 @@
+{
+  "tokenizer": "gpt2 (tiktoken)",
+  "dtype": "uint16",
+  "eot_token": 50256,
+  "domains": {
+    "stories": {
+      "source": "roneneldan/TinyStories",
+      "train_tokens": 20000000,
+      "test_tokens": 1000000,
+      "documents_collected": 95727,
+      "max_doc_tokens": 4096,
+      "seed": 1337
+    },
+    "code": {
+      "source": "codeparrot/codeparrot-clean (Python)",
+      "train_tokens": 20000000,
+      "test_tokens": 1000000,
+      "documents_collected": 9472,
+      "max_doc_tokens": 4096,
+      "seed": 1337
+    },
+    "math": {
+      "source": "openai/gsm8k (main) + open-web-math/open-web-math",
+      "train_tokens": 20000000,
+      "test_tokens": 1000000,
+      "documents_collected": 23296,
+      "max_doc_tokens": 4096,
+      "seed": 1337
+    },
+    "wikitext": {
+      "source": "Salesforce/wikitext (wikitext-103-raw-v1)",
+      "train_tokens": 20000000,
+      "test_tokens": 1000000,
+      "documents_collected": 210944,
+      "max_doc_tokens": 4096,
+      "seed": 1337
+    }
+  }
+}
