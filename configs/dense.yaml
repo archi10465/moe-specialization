@@ -1,0 +1,29 @@
+# Dense baseline: a normal transformer, no MoE.
+run_name: dense
+data_dir: data
+out_dir: checkpoints
+domains: [stories, code, math]
+
+# Model (same size as the MoE runs, except the FFN is a single network)
+n_layer: 6
+n_head: 4
+n_embd: 256
+block_size: 256
+dropout: 0.0
+bias: false
+expert_hidden: 1024
+n_experts: 0          # 0 = dense model
+
+# Training (keep identical across all runs)
+per_domain: 16        # 16 x 3 domains = 48 sequences per batch
+max_iters: 5000
+warmup_iters: 200
+lr: 6.0e-4
+min_lr: 6.0e-5
+weight_decay: 0.1
+grad_clip: 1.0
+eval_interval: 500
+eval_batches: 20
+seed: 1337
+device: auto          # cuda on Colab, mps on Mac, else cpu
+wandb: false
